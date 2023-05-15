@@ -6,12 +6,15 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <>
-    <Container maxWidth="sm">
-         <Stack  direction='row'>
+    <Container maxWidth="sm" sx={{justifyContent: 'space-between'}} >
+          <Stack  direction='row' gap={3}>
             <Link to='/'>Home</Link>
             <Link to='/pageOne'>pageOne</Link>
             <Link to='/pageTwo'>pageTwo</Link>
-         </Stack>
+            <Link to='/todoApp'>todo</Link>
+            <Link to='/weatherApi'>weather</Link>
+            <Link to='/movieFilter'>MovieFilter</Link>
+          </Stack>
       </Container>
     </>
   )

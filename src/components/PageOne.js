@@ -5,8 +5,8 @@ import axios from 'axios';
 import getSymbolFromCurrency from 'currency-symbol-map'
 
 const PageOne = () => {
-    const[currencyCodes, setCurrencyCodes]= useState({});
-    const[fromCurrencyCode, setFromCurrencyCode]= useState('');
+    const[currencyCodes, setCurrencyCodes]= useState([]);
+    const [fromCurrencyCode, setFromCurrencyCode]= useState('');
     const [toCurrencyCode, setToCurrencyCode] = useState('');
     const [amount, setAmount] = useState(0);
     const [convertedAmount, setConvertedAmount] = useState(0)
@@ -19,19 +19,20 @@ const PageOne = () => {
           )
           .then((response) => {
             setCurrencyCodes(response.data);
-            // console.log(response.data)
+            // console.log(typeof response.data)
           })
           .catch((error) => {
             console.log(error);
           });
       }, []);
-    // console.log(fromCurrencyCode)
+      // console.log("bhaskar", currencyCodes)
+    // console.log("fromCurrencyCode",fromCurrencyCode)
     useEffect(() =>{
         if(fromCurrencyCode && toCurrencyCode ){
             axios.get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${fromCurrencyCode}/${toCurrencyCode}.json`)
             .then((response) => {
                 setAmount(response.data[toCurrencyCode])
-                console.log(response)
+                // console.log(response)
             }).catch((error) =>{
                 console.log(error)
             })
@@ -40,7 +41,9 @@ const PageOne = () => {
     
       const handleFromCurrencyChange = (e) => {
         setFromCurrencyCode(e.target.value);
+        // console.log("bhaskar", e)
     };
+    
 
     const handleToCurrencyChange = (e) => {
         setToCurrencyCode(e.target.value);
@@ -49,7 +52,7 @@ const PageOne = () => {
      const handleAmountChange = (e) => {
      setConvertedAmount(e.target.value)
      }
-
+console.log("function",)
   return (
     <>
     <Container>
@@ -68,7 +71,6 @@ const PageOne = () => {
             <MenuItem
               key={key}
               value={key}
-             
             >
               {currencyCodes[key]}
             </MenuItem>
@@ -105,14 +107,14 @@ const PageOne = () => {
           <OutlinedInput
            value={convertedAmount}
            onChange={handleAmountChange}
-            startAdornment={<InputAdornment position="start">{getSymbolFromCurrency(fromCurrencyCode)}</InputAdornment>}
+            startAdornment={<InputAdornment position="start">{ getSymbolFromCurrency(fromCurrencyCode)}</InputAdornment>}
             label="Amount"
           />
         </FormControl>
     </div>
     <div>
      <h1>{toCurrencyCode}</h1>
-      <h3>{amount*convertedAmount}</h3>
+      <h3>{amount * convertedAmount}</h3>
     </div>
 
 <div>
@@ -123,7 +125,7 @@ const PageOne = () => {
    <div style={{marginTop:'2rem'}}>
    <Button variant='contained'><Link to='/Home'>Home</Link></Button>
    <Button variant='contained'><Link to='/PageTwo'>PageTwo</Link></Button>
-   </div>
+   </div>3
     </Container>
     </>
   )

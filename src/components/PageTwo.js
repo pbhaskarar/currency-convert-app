@@ -60,8 +60,6 @@ const PageTwo = () => {
      setFromCurrency(event.target.value)
     }
 
-   
-
     const handleAmountChange = (e) =>{
       setAmounts(e.target.value)
     }

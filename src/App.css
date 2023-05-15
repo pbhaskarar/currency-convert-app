@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+.bgImg{
+  background-image:url('../src//images/weather1.jpg');
+  height: 300px;
+  width: 300px;
+}
