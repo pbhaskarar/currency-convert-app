@@ -1,9 +1,9 @@
 import { Box, Button, Container, TextField, Typography } from '@mui/material'
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const WeatherApi = ({name}) => {
+const WeatherApi = () => {
     const[city, setCity] = useState()
     const [weather, setWeather] = useState([])
 
@@ -15,19 +15,22 @@ const submitHandler = (e)=>{
    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e1c3d24b91c38d5dfb175749aebb0b30`).then((res) => {
     const kelvin = res.data.main.temp;
     const celsius = kelvin - 273.15;
-    setWeather("Temperature at " + city + "\n" + Math.round(celsius) + "°C");
-    setCity('')
+    const newTemp = `Temperature ${city} at ${Math.round(celsius)}°C `
+    setWeather(newTemp);
+    localStorage.setItem('city', city);
    }).catch((error)=>{
     console.log(error)
    })
-
 }
+useEffect(() => {
+    setCity(localStorage.getItem('city') || '');
+  }, []);
 
   return (
     <>
     <Container>
     <Typography variant="h3" textAlign='center'sx={{marginTop: '5rem', textDecorationLine: 'underline'}}>
-           {name}
+          weather app 
     </Typography>
 
     <Box

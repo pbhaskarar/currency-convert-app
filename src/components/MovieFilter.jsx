@@ -23,6 +23,7 @@ const MovieFilter = () => {
             }
         })
     }
+    // console.log("bhaskar",movie[0])
   return (
    <>
    <Container>
@@ -40,8 +41,8 @@ const MovieFilter = () => {
      autoComplete="off"
      onSubmit= {handleFormSubmit}
     >
-      <TextField id="outlined-basic" label="query" variant="outlined" name='query' value={query} onChange={handleInputChange} />
-     <Button type='submit'>Search</Button>
+      <TextField id="outlined-basic" label="Movie" variant="outlined" name='query' value={query} onChange={handleInputChange} />
+     <Button variant='contained' type='submit'>Search</Button>
     </Box>
     <Grid container spacing={2}>
      {movie && movie.map((item) =>(
@@ -67,9 +68,11 @@ const MovieFilter = () => {
        </Grid>
      ))}
    </Grid>
+   <div style={{marginTop: '3rem'}}>
    <Button variant='contained'><Link to='/Home'>Home</Link></Button>
    <Button variant='contained'><Link to='/TodoApp'>todo</Link></Button>
     <Button variant='contained' ><Link to='/weatherApi'>weather</Link></Button>
+   </div>
    </Container>
    </>
   )

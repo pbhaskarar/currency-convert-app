@@ -46,10 +46,10 @@ const TodoApp = ({name}) => {
     <div key={index}>
         <h5>{item}<Button onClick={()=> deleHandler(index)}>delete</Button></h5>
     </div>
-))}
+    ))}
 
-<Button variant='contained'><Link to='/Home'>Home</Link></Button>
-<Button variant='contained'><Link to='/movieFilter'>movie</Link></Button>
+    <Button variant='contained'><Link to='/Home'>Home</Link></Button>
+    <Button variant='contained'><Link to='/movieFilter'>movie</Link></Button>
     <Button variant='contained' ><Link to='/weatherApi'>weather</Link></Button>
     </Container>
     </>

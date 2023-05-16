@@ -8,6 +8,8 @@ import PageSix from './PageSix'
 import Sample from './Sample'
 import WeatherApi from './WeatherApi'
 import TodoApp from './TodoApp'
+import CalculatorApp from './CalculatorApp'
+import TodoManagement from './TodoManagement'
 
 
 const Home = () => {
@@ -39,6 +41,7 @@ const Home = () => {
           <Button variant='contained' ><Link to='/movieFilter'>movie</Link></Button>
         </Grid>
       </Grid>
+      <TodoManagement name=' todo management' />
     </Container>
     </>
   )
