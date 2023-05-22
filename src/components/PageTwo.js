@@ -49,7 +49,6 @@ const PageTwo = () => {
       .then((response) => {setAmount(response.data[fromcurrency]);
       // console.log(response)
       })
-
     }
   },[fromcurrency]);
   // console.log(amount)
